@@ -1,28 +1,59 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+struct empleado
+{
+  char nombre [30];
+  char fecha_ing [11];
+  float sueldo;
+};
+void reporteAntiguedad (char fecha[11])
+{
+ empleado reg;
+ FILE * ptr;
+ float antiguedad;
+ float bono;
+ ptr = fopen ("empleado.dat","rb");
+ if (ptr !=NULL)
+{
+   cout << " =================================================================="<<endl;
+   cout << "                Reporte bono de antiguedad                         "<<endl;
+   cout << " =================================================================="<<endl;
+   cout << " fecha actual:                                                      <<fecha<<endl;
+   cout << " =================================================================="<<endl;
+   cout << " Nombre          fecha ingreso          antiguedad         monto  " <<endl;
+   cout << " =================================================================="<<endl;
+   fread (&reg,sizeof(reg),1,ptr)
+   while (!feof(ptr))
+{
+       cout << reg.nombre << "   ";
+       cout << reg.fecha_ing<< "  ";
+       antiguedad = calc_ant (fecha,reg.fecha_ing);
+       cout << antiguedad << "  ";´
+       cout << antiguedad * reg.sueldo * (5/100) << "   " << endl;
+       fread (&reg,sizeof(reg),1,ptr)
+}
+fclose (ptr);
+cout << " ======================================================================"<<endl;
+float clac_ant (char fecha [11], char fecha_ing[11])
+{
+   int anhos,anho_act,anhos_ing;
+   anho_act = atoi (fecha + 6 );
+   anho_ing = atoi (fecha_ing + 6 );
+   anhos = anho_act - anho_ing;
+   return anhos;
+ }  
+  
 
-# Precompiled Headers
-*.gch
-*.pch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
 
-# Fortran module files
-*.mod
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
 
-# Executables
-*.exe
-*.out
-*.app
+
+
+
+
+
+
+
+
+
+
+   
